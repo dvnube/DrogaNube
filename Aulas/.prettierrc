@@ -1,15 +1,15 @@
 {
-  "printWidth": 120,
-  "tabWidth": 4,
-  "trailingComma": "none",
-  "overrides": [
-    {
-      "files": "**/lwc/**/*.html",
-      "options": { "parser": "lwc" }
-    },
-    {
-      "files": "*.{cmp,page,component}",
-      "options": { "parser": "html" }
-    }
-  ]
+    "printWidth": 120,
+    "tabWidth": 4,
+    "trailingComma": "none",
+    "overrides": [
+        {
+            "files": "**/lwc/**/*.html",
+            "options": { "parser": "lwc" }
+        },
+        {
+            "files": "*.{cmp,page,component}",
+            "options": { "parser": "html" }
+        }
+    ]
 }
