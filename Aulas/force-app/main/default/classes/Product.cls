@@ -1,6 +1,5 @@
-public class Product {
-    
-    public Product() {
-
-    }
+public class Produto {
+    public String id;
+    public String name;
+    public TipoProduto tipo;
 }
