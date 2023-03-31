@@ -1,0 +1,88 @@
+public void exemplos() {
+        //lista de pedidos
+        List<Pedido__c> pedidos = [
+            SELECT
+                Id,
+                Name,
+                Cliente__c,
+                Cliente__r.Name,
+                Farmacia__c,
+                Farmacia__r.Estoque__c,
+                Farmacia__r.Estoque__r.Name
+            FROM Pedido__c
+        ];
+        System.debug('pedidos...');
+        for (Pedido__c p : pedidos) {
+            System.debug('pedido: ' + p);
+            System.debug('nome do cliente: ' + p.Cliente__r.Name);
+            System.debug('nome do estoque: ' + p.Farmacia__r.Estoque__r.Name);
+        }
+
+        //lista de produtos dos pedidos
+        List<ProdutoPedido__c> produtosPedidos = [
+            SELECT
+                Id,
+                Name,
+                Produto__c,
+                Produto__r.Name,
+                Pedido__c,
+                Pedido__r.Name,
+                Pedido__r.Cliente__c,
+                Pedido__r.Cliente__r.Name,
+                Pedido__r.Farmacia__c,
+                Quantidade__c
+            FROM ProdutoPedido__c
+        ];
+        System.debug('---------------');
+        System.debug('produtos dos pedidos...');
+        for (ProdutoPedido__c pp : produtosPedidos) {
+            System.debug('produto do pedido: ' + pp);
+            System.debug('id do pedido: ' + PP.Pedido__c);
+            System.debug('id da farmácia: ' + pp.Pedido__r.Farmacia__c);
+            System.debug('nome do cliente: ' + pp.Pedido__r.Cliente__r.Name);
+        }
+
+        //lista de pedidos com produtos
+        List<Pedido__c> pedidosComProdutos = [
+            SELECT
+                Id,
+                Name,
+                Cliente__c,
+                Cliente__r.Name,
+                Farmacia__c,
+                Farmacia__r.Estoque__c,
+                Farmacia__r.Estoque__r.Name,
+                (SELECT Id, Name, Produto__c, Produto__r.Name, Quantidade__c FROM Produtos__r)
+            FROM Pedido__c
+        ];
+        System.debug('---------------');
+        System.debug('pedidos com produtos...');
+        for (Pedido__c p : pedidosComProdutos) {
+            System.debug('pedido: ' + p);
+            System.debug('nome do estoque: ' + p.Farmacia__r.Estoque__r.Name);
+            for (ProdutoPedido__c pp : p.Produtos__r) {
+                System.debug('produto do pedido: ' + pp);
+                System.debug('nome do produto: ' + pp.Produto__r.Name);
+                System.debug('qtd: ' + pp.Quantidade__c);
+            }
+        }
+
+        //busca produtos no estoque
+        //aqui tá rolando um filtro cabuloso
+        //vai buscar todos ProdutoEstoque__c que possuam Produto__c (Id do produto) = (todos os Produto Id que estão associados ao Pedido de id 'a0M5w00000aDCiMEAW')
+        //obviamente essa Id é um Pedido que existe na minha org...
+        //é.. BAGULHO É DOIDO
+        List<ProdutoEstoque__c> produtosEstoque = [
+            SELECT Id, Quantidade__c, Produto__c, Estoque__c, Produto__r.Name, Estoque__r.Name
+            FROM ProdutoEstoque__c
+            WHERE Produto__c IN (SELECT Produto__c FROM ProdutoPedido__c WHERE Pedido__c = 'a0M5w00000aDCiMEAW')
+        ];
+
+        System.debug('-------------');
+        System.debug('produtos estoque filtradasso');
+        for (ProdutoEstoque__c pe : produtosEstoque) {
+            System.debug('pe: ' + pe);
+            System.debug('produto name: ' + pe.Produto__r.Name);
+            System.debug('estoque name: ' + pe.Estoque__r.Name);
+        }
+    }
