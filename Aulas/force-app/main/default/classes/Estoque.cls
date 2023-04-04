@@ -48,4 +48,8 @@ public class Estoque {
 
         return produtos;
     }
+
+    public Boolean temEstoque(Id produto, Id estoque) {
+                
+    }
 }
