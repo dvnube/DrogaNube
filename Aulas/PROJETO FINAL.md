@@ -2,17 +2,17 @@ PROJETO FINAL
 - Data máxima de entrega: 25/06
 - Nível de exigência: máxima possível, pois definirá se ganhará o certificado ou não
 - Número máximo de tentativas: 2
-    a primeira apresentação não é "eliminatória"
-    darei o feedback e solicitarei as mudanças/melhorias/etc
+    - a primeira apresentação não é "eliminatória"
+    - darei o feedback e solicitarei as mudanças/melhorias/etc
 - Aulas para tirada de dúvidas, troubleshooting, etc: terça e quinta de 19 às 20
 - Apresentações: 
-    câmera ligada, todas/os
-    presença obrigatória em todas, se deseja o certificado.
-    se apresentou e passou, tá liberada/o de assistir as outras apresentações
-    enquanto não passar, presença obrigatória.
-    feedback realtime, ao vivo
-    marcar com antecedência de, pelo menos, 2 semanas, para todas/os se programarem.
-    horários disponíveis: terça e quinta de 19 às 20
+    - câmera ligada, todas/os
+    - presença obrigatória em todas, se deseja o certificado.
+    - se apresentou e passou, tá liberada/o de assistir as outras - apresentações
+    - enquanto não passar, presença obrigatória.
+    - feedback realtime, ao vivo
+    - marcar com antecedência de, pelo menos, 2 semanas, para todas/os se programarem.
+    - horários disponíveis: terça e quinta de 19 às 20
 
 
 
@@ -25,7 +25,7 @@ PROJETO FINAL
         - Validação de campo
         - Setar um valor padrão em determinado campo
             - Exemplo (não pode usar esse):
-                Ao inserir um pedido, setar o valor Status = Draft.
+                - Ao inserir um pedido, setar o valor Status = Draft.
 
 - Trigger before update
     - Objeto: qualquer
@@ -60,7 +60,7 @@ Pelo menos pra resolver esse problema...
 - Trigger after update
     - Objeto: Produto do Pedido
     - SE "Valor__c" foi alterado ENTÃO
-        Atualize o campo "RecalcularValorTotal__c" no objeto "Pedido__c" para TRUE
+        - Atualize o campo "RecalcularValorTotal__c" no objeto "Pedido__c" para TRUE
 - Trigger after delete
     - Objeto: Produto do Pedido
     - Atualize o campo "RecalcularValorTotal__c" no objeto "Pedido__c" para TRUE
