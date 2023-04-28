@@ -62,13 +62,13 @@ public with sharing class TriggerHandler {
      * See examples at bind() method
      */
     private void construct() {
-        if (settings.DisableAll__c || disableAll) {
+        if (settings.DisableAllTriggers__c || disableAll) {
             return;
         }
 
-        // if (this.sObjectType == ProdutoPedido__c.getSObjectType()) {
-        // } else if (this.sObjectType == Pedido__c.getSObjectType()) {
-        // }
+        if (this.sObjectType == ProdutoEstoque__c.getSObjectType()) {
+            bind(this.sObjectType, evt.beforeinsert, new ProdutoEstoque_CheckQuantity());
+        }
     }
 
     /**

@@ -22,7 +22,7 @@ PROJETO FINAL
 - Trigger before insert
     - Objeto: qualquer
     - Critérios de aceitação: 
-        - Validação de campo
+        - Validação de campo --- (valida quantidade - em andamento)
         - Setar um valor padrão em determinado campo
             - Exemplo (não pode usar esse):
                 - Ao inserir um pedido, setar o valor Status = Draft.
