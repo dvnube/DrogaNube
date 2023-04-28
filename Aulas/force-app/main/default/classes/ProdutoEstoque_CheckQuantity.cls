@@ -6,7 +6,6 @@ public with sharing class ProdutoEstoque_CheckQuantity extends SObjectTrigger {
         return ProdutoEstoque_CheckQuantity.class.getName();
     }
 
-    //right now, this class is being invoked only by BEFORE INSERT
     public override Boolean getIsToProcess(SObject oldRecord, SObject newRecord) {
         if (disableTrigger || disableTriggerSettings || running) {
             return false;
