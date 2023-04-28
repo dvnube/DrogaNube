@@ -24,10 +24,6 @@ public with sharing class ProdutoEstoque_UpdateProductName extends SObjectTrigge
     }
 
     private void executeTrigger(ProdutoEstoque__c record) {
-        if (record.Quantidade__c == null) {
-            record.Quantidade__c.addError('Required field');
-        } else if (record.Quantidade__c <= 0) {
-            record.Quantidade__c.addError('It must be greater than 0');
-        }
+        
     }
 }

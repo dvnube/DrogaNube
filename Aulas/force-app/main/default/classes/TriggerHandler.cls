@@ -62,7 +62,7 @@ public with sharing class TriggerHandler {
      * See examples at bind() method
      */
     private void construct() {
-        if (settings.DisableAllTriggers__c || disableAll) {
+        if (settings.DisableAll__c || disableAll) {
             return;
         }
 
