@@ -70,6 +70,8 @@ public with sharing class TriggerHandler {
             bind(this.sObjectType, evt.beforeinsert, new ProdutoEstoque_CheckQuantity());
             bind(this.sObjectType, evt.beforeinsert, new ProdutoEstoque_UpdateProductName());
             bind(this.sObjectType, evt.beforeupdate, new ProdutoEstoque_CheckQuantity());
+        } else if (this.sObjectType == Pedido__c.getSObjectType()) {
+            bind(this.sObjectType, evt.afterinsert, new Pedido_NotifyCustomer());
         }
     }
 

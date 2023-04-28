@@ -32,7 +32,7 @@ PROJETO FINAL
     - Critério de aceitação
         - Validação de campo
 
-- Trigger after insert
+- Trigger after insert ---
     - Objeto: qualquer
     - Atualização de campo em registro relacionado
 
