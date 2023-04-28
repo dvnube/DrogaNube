@@ -1,9 +1,9 @@
-public with sharing class Pedido_NotifyCustomer extends SObjectTrigger {
+public with sharing class Account_NotifyCustomer extends SObjectTrigger {
     public static Boolean disableTrigger = false;
     private static Boolean running = false;
     
     public override String getRunningClassName() {
-        return Pedido_NotifyCustomer.class.getName();
+        return Account_NotifyCustomer.class.getName();
     }
 
     //right now, this class is being invoked only by AFTER UPDATE
@@ -13,15 +13,19 @@ public with sharing class Pedido_NotifyCustomer extends SObjectTrigger {
         }
         
         running = true;
-        
-        return true;
+        Boolean oldNotify = (Boolean) oldRecord.get('NotifyNewOrder__c');
+        Boolean newNotify = (Boolean) newRecord.get('NotifyNewOrder__c');
+        return !oldNotify && newNotify;
     }
 
     public override void executeTrigger(List<SObject> records) {
+        sendEmails(records);
+        uncheckField(records);
+
         List<Account> accs = new List<Account>();
-        
-        for (Pedido__c record : (List<Pedido__c>) records) {
-            accs.add(new Account(Id = record.Cliente__c, NotifyNewOrder__c = true));
+        for (Account record : (List<Account>) records) {
+            sendEmail(record.Id);
+            accs.add(new Account(Id = record.Id, NotifyNewOrder__c = false)); //uncheck the field
         }
 
         update accs;
