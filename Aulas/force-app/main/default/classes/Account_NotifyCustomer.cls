@@ -20,12 +20,19 @@ public with sharing class Account_NotifyCustomer extends SObjectTrigger {
 
     public override void executeTrigger(List<SObject> records) {
         List<Account> accs = new List<Account>();
-        for (Account record : (List<Account>) records) {
-            
+        List<Messaging.SingleEmailMessage> emails = new List<Messaging.SingleEmailMessage>();
 
+        for (Account record : (List<Account>) records) {
+            Messaging.SingleEmailMessage email = new Messaging.SingleEmailMessage();
+            email.setPlainTextBody('A new order has been created for you!');
+            email.setSubject('New order \\o/');
+            email.setToAddresses(new List<String>{record.Email__c});
+            emails.add(email);
+            
             accs.add(new Account(Id = record.Id, NotifyNewOrder__c = false)); //uncheck the field
         }
-
+        
+        Messaging.sendEmail(emails);
         update accs;
     }
 }
