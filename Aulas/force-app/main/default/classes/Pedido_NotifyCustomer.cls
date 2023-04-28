@@ -20,13 +20,8 @@ public with sharing class Pedido_NotifyCustomer extends SObjectTrigger {
     public override void executeTrigger(List<SObject> records) {
         List<Account> accs = new List<Account>();
         
-        for (Account record : (List<Account>) records) {
-            Messaging.SingleEmailMessage sem = new Messaging.SingleEmailMessage();
-            sem.setPlainTextBody('bla');
-            sem.setToAddresses(record.Email__c);
-
-
-            accs.add(new Account(Id = record.Id, NotifyNewOrder__c = true));
+        for (Pedido__c record : (List<Pedido__c>) records) {
+            accs.add(new Account(Id = record.Cliente__c, NotifyNewOrder__c = true));
         }
 
         update accs;
