@@ -1,7 +1,7 @@
 public with sharing class Pedido_CheckPending extends SObjectTrigger {
     public static Boolean disableTrigger = false;
     private static Boolean running = false;
-    
+
     public override String getRunningClassName() {
         return Pedido_CheckPending.class.getName();
     }
@@ -11,27 +11,19 @@ public with sharing class Pedido_CheckPending extends SObjectTrigger {
         if (disableTrigger || disableTriggerSettings || running) {
             return false;
         }
-        
+
         running = true;
-        
+
         return true;
     }
 
     public override void executeTrigger(List<SObject> records) {
-        List<Account> accs = new List<Account>();
-        List<Messaging.SingleEmailMessage> emails = new List<Messaging.SingleEmailMessage>();
-
-        for (Account record : (List<Account>) records) {
-            Messaging.SingleEmailMessage email = new Messaging.SingleEmailMessage();
-            email.setPlainTextBody('A new order has been created for you!');
-            email.setSubject('New order \\o/');
-            email.setToAddresses(new List<String>{record.Email__c});
-            emails.add(email);
-            
-            accs.add(new Account(Id = record.Id, NotifyNewOrder__c = false)); //uncheck the field
-        }
+        Map<Id, Pedido__c> pedidosMap = new Map<Id, Pedido__c>([SELECT Id, (SELECT Id FROM Produtos__r WHERE Pendencia__c = TRUE) FROM Pedido__c WHERE Id IN :records]);
         
-        Messaging.sendEmail(emails);
-        update accs;
+        for (Pedido__c record : (List<Pedido__c>) records) {
+            if (!pedidosMap.get(record.Id).Produtos__r.isEmpty()) {
+                record.addError('Nop.');
+            }
+        }
     }
 }
