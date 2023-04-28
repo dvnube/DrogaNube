@@ -68,6 +68,7 @@ public with sharing class TriggerHandler {
 
         if (this.sObjectType == ProdutoEstoque__c.getSObjectType()) {
             bind(this.sObjectType, evt.beforeinsert, new ProdutoEstoque_CheckQuantity());
+            bind(this.sObjectType, evt.beforeinsert, new ProdutoEstoque_UpdateProductName());
         }
     }
 
