@@ -40,7 +40,7 @@ PROJETO FINAL
     - Objeto: qualquer
     - Disparar e-mail
 
-- Trigger before delete
+- Trigger before delete --- FEITO (pedido)
     - Objeto: qualquer
     - Validação: não permitir a exclusão SE "alguma coisa" (criatividade, pede ajuda pro ChatGPT no brainstorming...)
 
