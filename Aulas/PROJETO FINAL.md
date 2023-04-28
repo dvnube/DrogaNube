@@ -19,11 +19,11 @@ PROJETO FINAL
 
 ---- REQUISITOS OBRIGATÓRIOS ----
 
-- Trigger before insert
+- Trigger before insert --- FEITO
     - Objeto: qualquer
     - Critérios de aceitação: 
         - Validação de campo --- (valida quantidade - FEITO)
-        - Setar um valor padrão em determinado campo --- (nome do produto - EM ANDAMENTO)
+        - Setar um valor padrão em determinado campo --- (nome do produto - FEITO)
             - Exemplo (não pode usar esse):
                 - Ao inserir um pedido, setar o valor Status = Draft.
 
