@@ -36,7 +36,7 @@ PROJETO FINAL
     - Objeto: qualquer
     - Atualização de campo em registro relacionado
 
-- Trigger after update
+- Trigger after update --- FEITO (account)
     - Objeto: qualquer
     - Disparar e-mail
 
