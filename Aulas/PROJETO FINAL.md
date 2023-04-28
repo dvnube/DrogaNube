@@ -19,28 +19,28 @@ PROJETO FINAL
 
 ---- REQUISITOS OBRIGATÓRIOS ----
 
-- Trigger before insert
+- Trigger before insert --- FEITO (produto estoque)
     - Objeto: qualquer
     - Critérios de aceitação: 
-        - Validação de campo
-        - Setar um valor padrão em determinado campo
+        - Validação de campo --- (valida quantidade- FEITO)
+        - Setar um valor padrão em determinado campo --- (nome do produto - FEITO)
             - Exemplo (não pode usar esse):
                 - Ao inserir um pedido, setar o valor Status = Draft.
 
-- Trigger before update
+- Trigger before update --- FEITO (produto estoque)
     - Objeto: qualquer
     - Critério de aceitação
         - Validação de campo
 
-- Trigger after insert
+- Trigger after insert --- FEITO (pedido)
     - Objeto: qualquer
     - Atualização de campo em registro relacionado
 
-- Trigger after update
+- Trigger after update --- FEITO (account)
     - Objeto: qualquer
     - Disparar e-mail
 
-- Trigger before delete
+- Trigger before delete --- FEITO (pedido)
     - Objeto: qualquer
     - Validação: não permitir a exclusão SE "alguma coisa" (criatividade, pede ajuda pro ChatGPT no brainstorming...)
 
