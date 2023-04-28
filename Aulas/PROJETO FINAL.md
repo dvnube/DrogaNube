@@ -27,7 +27,7 @@ PROJETO FINAL
             - Exemplo (não pode usar esse):
                 - Ao inserir um pedido, setar o valor Status = Draft.
 
-- Trigger before update
+- Trigger before update --- FEITO
     - Objeto: qualquer
     - Critério de aceitação
         - Validação de campo
