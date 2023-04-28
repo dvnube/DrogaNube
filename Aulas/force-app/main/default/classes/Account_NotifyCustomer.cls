@@ -6,7 +6,7 @@ public with sharing class Pedido_NotifyCustomer extends SObjectTrigger {
         return Pedido_NotifyCustomer.class.getName();
     }
 
-    //right now, this class is being invoked only by AFTER INSERT
+    //right now, this class is being invoked only by AFTER UPDATE
     public override Boolean getIsToProcess(SObject oldRecord, SObject newRecord) {
         if (disableTrigger || disableTriggerSettings || running) {
             return false;

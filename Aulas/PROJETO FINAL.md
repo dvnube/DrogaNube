@@ -19,20 +19,20 @@ PROJETO FINAL
 
 ---- REQUISITOS OBRIGATÓRIOS ----
 
-- Trigger before insert --- FEITO
+- Trigger before insert --- FEITO (produto estoque)
     - Objeto: qualquer
     - Critérios de aceitação: 
-        - Validação de campo --- (valida quantidade - FEITO)
+        - Validação de campo --- (valida quantidade- FEITO)
         - Setar um valor padrão em determinado campo --- (nome do produto - FEITO)
             - Exemplo (não pode usar esse):
                 - Ao inserir um pedido, setar o valor Status = Draft.
 
-- Trigger before update --- FEITO
+- Trigger before update --- FEITO (produto estoque)
     - Objeto: qualquer
     - Critério de aceitação
         - Validação de campo
 
-- Trigger after insert ---
+- Trigger after insert --- FEITO (pedido)
     - Objeto: qualquer
     - Atualização de campo em registro relacionado
 
