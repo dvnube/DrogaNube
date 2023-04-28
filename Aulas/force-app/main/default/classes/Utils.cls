@@ -8,4 +8,14 @@ public with sharing class Utils {
         }
         return randStr; 
     }
+
+    public static Map<Id, SObject> buildMapByIdField(List<SObject> records, Schema.SObjectField field) {
+        Map<Id, SObject> var = new Map<Id, SObject>();
+
+        for (SObject record : records) {
+            var.put(Id.valueOf(String.valueOf(record.get(field))), record);
+        }
+
+        return var;
+    }
 }
