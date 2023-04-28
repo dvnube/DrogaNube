@@ -14,7 +14,9 @@ public with sharing class ProdutoEstoque_CheckQuantity extends SObjectTrigger {
         
         running = true;
         
-        return true;
+        Decimal quantity = (Decimal) newRecord.get('Quantidade__c');
+        
+        return quantity == null || quantity <= 0;
     }
 
     public override void executeTrigger(List<SObject> records) {
